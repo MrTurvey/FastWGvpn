@@ -1,0 +1,69 @@
+# AWS Configuration
+aws:
+  # AWS profile to use (from ~/.aws/credentials)
+  profile: "default"
+  
+  # AWS region for resources
+  region: "us-west-2"
+
+# EC2 Instance Configuration  
+ec2:
+  # Instance type (t3.micro is free tier eligible)
+  instance_type: "t3.micro"
+  
+  # AMI ID - these are region specific
+  # Leave empty to auto-detect latest Amazon Linux 2023
+  ami_id: ""
+  
+  # Key pair name (will be created if doesn't exist)
+  key_pair_name: "wireguard-keypair"
+
+# Security Configuration
+security:
+  # Security group name
+  security_group_name: "wireguard-sg"
+  
+  # Additional SSH access - set to your IP for better security
+  # Use "0.0.0.0/0" for access from anywhere (less secure)
+  ssh_cidr: "0.0.0.0/0"
+
+# WireGuard Configuration
+wireguard:
+  # VPN listening port
+  port: 51820
+  
+  # VPN network (CIDR notation)
+  network: "10.8.0.0/24"
+  
+  # Server IP within the VPN network
+  server_ip: "10.8.0.1"
+  
+  # Client IP within the VPN network  
+  client_ip: "10.8.0.2"
+  
+  # DNS servers for clients
+  dns_servers:
+    - "8.8.8.8"
+    - "8.8.4.4"
+  
+  # Persistent keepalive interval (seconds)
+  keepalive: 25
+
+# Output Configuration
+output:
+  # Client configuration filename
+  client_config_file: "client.conf"
+  
+  # Save server details to file
+  server_info_file: "server-info.json"
+
+# Advanced Options
+advanced:
+  # Maximum time to wait for instance setup (seconds)
+  setup_timeout: 300
+  
+  # Enable detailed logging
+  verbose: false
+  
+  # Automatically open client config after creation
+  auto_open_config: false

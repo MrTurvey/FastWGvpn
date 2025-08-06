@@ -1,0 +1,11 @@
+# AWS WireGuard VPN Setup - Python Requirements
+# Install with: pip install -r requirements.txt
+
+# AWS SDK for Python
+boto3>=1.34.0
+
+# YAML configuration file parsing
+PyYAML>=6.0
+
+# Cryptographic operations for WireGuard key generation
+cryptography>=41.0.0
