@@ -231,7 +231,7 @@ class WireGuardAWSSetup:
         wg_config = self.config['wireguard']
         
         user_data = f"""#!/bin/bash
-yum update -y && yum install -y wireguard-tools
+yum update -y && yum install -y wireguard-tools iptables-nft iptables-services
 echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.conf && sysctl -p
 MAIN_INTERFACE=$(ip route | grep default | awk '{{print $5}}' | head -n1)
 
